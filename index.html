@@ -12,7 +12,7 @@
       <div class="row">
         <h1 class="text-center">Journal!</h1>
         <hr>
-          <form action="index.html" method="post">
+          <form id="journal-form" action="index.html" method="post">
             <div class="form-group col-sm-6">
               <label for="header">Header</label>
               <input id="header" class="form-control" type="text" name="header">
@@ -26,8 +26,17 @@
 
 
           <div class="row">
-            <div id="results" class="col-sm-12">
-              
+            <div class="col-sm-6">
+              <h3>Header</h3>
+              <ul id="header-results">
+
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <h3>Body</h3>
+              <ul id="body-results">
+
+              </ul>
             </div>
           </div>
 

@@ -1,48 +1,30 @@
-function Entry(text) {
-  this.text = text;
-  this.words = 0;
-  this.vowels = 0;
-  this.consonants = 0;
-  this.special = 0;
-}
+var Entry = require('./../js/journal.js').entryModule;
 
-Entry.prototype.wordCount = function() {
-  var text = this.text;
-  this.words = text.split(" ").length;
-}
+$('#journal-form').submit(function(event){
+  event.preventDefault();
 
-Entry.prototype.counter = function() {
-  var vowelsArray = ["a", "e", "i", "o", "u"];
-  var consonantsArray = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"];
+  var header = new Entry( $('#header').val() );
+  header.wordCount();
+  header.counter();
+  var headerWordCount = header.words;
+  var headerVowelsCount = header.vowels;
+  var headerConsonantsCount = header.consonants;
+  var headerSpecialCount = header.special;
+  var body = new Entry( $('#body').val() );
+  body.wordCount();
+  body.counter();
+  var bodyWordCount = body.words;
+  var bodyVowelsCount = body.vowels;
+  var bodyConsonantsCount = body.consonants;
+  var bodySpecialCount = body.special;
 
-  var text = this.text;
-  var letters = text.split('');
+  $('#header-results').append("<li>Your Word Count: " + headerWordCount + "</li>");
+  $('#header-results').append("<li>Your Vowel Count: " + headerVowelsCount + "</li>");
+  $('#header-results').append("<li>Your Consonant Count: " + headerConsonantsCount + "</li>");
+  $('#header-results').append("<li>Your Special Count: " + headerSpecialCount + "</li>");
 
-  for (var i = 0; i < letters.length; i++) {
-    if (vowelsArray.indexOf(letters[i].toLowerCase()) > -1) {
-      this.vowels += 1;
-    } else if (consonantsArray.indexOf(letters[i].toLowerCase()) > -1) {
-      this.consonants += 1;
-    } else {
-      this.special += 1;
-    }
-  }
-
-}
-
-// var vowels = 0;
-// var consonants = 0;
-// var special = 0;
-//
-//
-// function test (letters) {
-//   for (var i = 0; i < letters.length; i++) {
-//     if (vowelsArray.indexOf(letters[i].toLowerCase()) > -1) {
-//       vowels += 1;
-//     } else if (consonantsArray.indexOf(letters[i].toLowerCase()) > -1) {
-//       consonants += 1;
-//     } else {
-//       special += 1;
-//     }
-//   }
-// }
+  $('#body-results').append("<li>Your Word Count: " + bodyWordCount + "</li>");
+  $('#body-results').append("<li>Your Vowel Count: " + bodyVowelsCount + "</li>");
+  $('#body-results').append("<li>Your Consonant Count: " + bodyConsonantsCount + "</li>");
+  $('#body-results').append("<li>Your Special Count: " + bodySpecialCount + "</li>");
+});
