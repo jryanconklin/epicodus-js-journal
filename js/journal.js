@@ -27,24 +27,6 @@ Entry.prototype.counter = function() {
       this.special += 1;
     }
   }
-
 }
 
 exports.entryModule = Entry;
-
-// var vowels = 0;
-// var consonants = 0;
-// var special = 0;
-//
-//
-// function test (letters) {
-//   for (var i = 0; i < letters.length; i++) {
-//     if (vowelsArray.indexOf(letters[i].toLowerCase()) > -1) {
-//       vowels += 1;
-//     } else if (consonantsArray.indexOf(letters[i].toLowerCase()) > -1) {
-//       consonants += 1;
-//     } else {
-//       special += 1;
-//     }
-//   }
-// }
